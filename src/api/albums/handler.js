@@ -4,6 +4,11 @@ const ClientError = require('../../exceptions/ClientError');
 class AlbumHandler {
   constructor(service) {
     this._service = service;
+
+    this.postAlbumHandler = this.postAlbumHandler.bind(this);
+    this.getAlbumByIdHandler = this.getAlbumByIdHandler.bind(this);
+    this.putAlbumByIdHandler = this.putAlbumByIdHandler.bind(this);
+    this.deleteAlbumByIdHandler = this.deleteAlbumByIdHandler.bind(this);
   }
 
   postAlbumHandler(request, h) {
