@@ -46,12 +46,12 @@ class AlbumService {
   }
 
   deleteAlbumById(id) {
-    const index = this._albums.findIndex((note) => note.id === id);
+    const index = this._albums.findIndex((album) => album.id === id);
     if (index === -1) {
-      throw new NotFoundError('Catatan gagal dihapus. Id tidak ditemukan');
+      throw new NotFoundError('Album gagal dihapus. Id tidak ditemukan');
     }
 
-    this._notes.splice(index, 1);
+    this._albums.splice(index, 1);
   }
 }
 
