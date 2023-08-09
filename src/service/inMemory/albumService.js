@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 const { nanoid } = require('nanoid');
 const NotFoundError = require('../../exceptions/NotFoundError');
+const InvariantError = require('../../exceptions/InvariantError');
 
 class AlbumService {
   constructor() {
@@ -11,13 +12,13 @@ class AlbumService {
     const id = `album-${nanoid(16)}`;
 
     const newAlbum = {
-      name, year,
+      id, name, year,
     };
     this._albums.push(newAlbum);
 
     const isSuccess = this._albums.filter((album) => album.id === id).length > 0;
     if (!isSuccess) {
-      throw new Error('Album gagal ditambahkan');
+      throw new InvariantError('Album gagal ditambahkan');
     }
 
     return id;

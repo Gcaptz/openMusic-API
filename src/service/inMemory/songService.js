@@ -14,7 +14,7 @@ class SongService {
     const id = `song-${nanoid(16)}`;
 
     const newSong = {
-      title, year, genre, performer, duration, albumId,
+      id, title, year, genre, performer, duration, albumId,
     };
     this._songs.push(newSong);
 
