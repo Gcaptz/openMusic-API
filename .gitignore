@@ -1,2 +1,4 @@
 node_modules
 api-webserver.pem
+.env
+.prod.env
