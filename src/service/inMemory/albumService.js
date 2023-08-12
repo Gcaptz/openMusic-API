@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 const { nanoid } = require('nanoid');
 const NotFoundError = require('../../exceptions/NotFoundError');
 const InvariantError = require('../../exceptions/InvariantError');
@@ -10,9 +9,11 @@ class AlbumService {
 
   addAlbum({ name, year }) {
     const id = `album-${nanoid(16)}`;
+    const createdAt = new Date().toISOString();
+    const updatedAt = createdAt;
 
     const newAlbum = {
-      id, name, year,
+      id, name, year, createdAt, updatedAt,
     };
     this._albums.push(newAlbum);
 
@@ -38,11 +39,13 @@ class AlbumService {
     if (index === -1) {
       throw new NotFoundError('Gagal memperbarui album. Id tidak ditemukan');
     }
+    const updatedAt = new Date().toISOString();
 
     this._albums[index] = {
       ...this._albums[index],
       name,
       year,
+      updatedAt,
     };
   }
 
